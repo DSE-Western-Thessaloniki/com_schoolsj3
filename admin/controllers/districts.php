@@ -1,0 +1,13 @@
+<?php
+defined('_JEXEC') or die;
+
+class Schoolsj3ControllerDistricts extends JControllerAdmin
+{
+    public function getModel($name = 'District', $prefix = 'Schoolsj3Model', $config = array('ignore_request' => true))
+    {
+	$model = parent::getModel($name, $prefix, $config);
+	return $model;
+    }
+}
+
+?>
