@@ -1,54 +1,64 @@
 <?php
+
+use Joomla\CMS\Access\Access;
+use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\Helpers\Sidebar;
+use Joomla\CMS\Language\Text;
+use Joomla\Registry\Registry;
+
 defined('_JEXEC') or die;
 
 class Schoolsj3Helper
 {
     public static function getActions($categoryId = 0)
     {
-	$user = JFactory::getUser();
-	$result = new JObject;
+		$user = Factory::getApplication()->getIdentity();
+		$result = new Registry();
 
-	if (empty($categoryId))
-	{
-	    $assetName = 'com_schoolsj3';
-	    $level = 'component';
-	}
-	else
-	{
-	    $assetName = 'com_schoolsj3.category.'.(int) $categoryId;
-	    $level = 'category';
-	}
+		if (empty($categoryId))
+		{
+			$assetName = 'com_schoolsj3';
+			$level = 'component';
+		}
+		else
+		{
+			$assetName = 'com_schoolsj3.category.'.(int) $categoryId;
+			$level = 'category';
+		}
 
-	$actions = JAccess::getActions('com_schoolsj3', $level);
+		$actions = Access::getActionsFromFile(
+			"../access.xml", 
+			"/access/section[@name='$level']/"
+		);
 
-	foreach ($actions as $action)
-	{
-	    $result->set($action->name, $user->authorise($action->name, $assetName));
-	}
+		foreach ($actions as $action)
+		{
+			$result->set($action->name, $user->authorise($action->name, $assetName));
+		}
 
-	return $result;
+		return $result;
     }
 
     public static function addSubmenu($vName = 'schools')
     {
-	JHtmlSidebar::addEntry(JText::_('COM_SCHOOLSJ3_SUBMENU_SCHOOLS'),
+	Sidebar::addEntry(Text::_('COM_SCHOOLSJ3_SUBMENU_SCHOOLS'),
 	'index.php?option=com_schoolsj3&view=schools', $vName == 'schools' );
-	JHtmlSidebar::addEntry( JText::_('COM_SCHOOLSJ3_SUBMENU_CATEGORIES'),
+	Sidebar::addEntry( Text::_('COM_SCHOOLSJ3_SUBMENU_CATEGORIES'),
 	'index.php?option=com_schoolsj3&view=categories', $vName == 'categories' );
-	JHtmlSidebar::addEntry( JText::_('COM_SCHOOLSJ3_SUBMENU_OFFICES'),
+	Sidebar::addEntry( Text::_('COM_SCHOOLSJ3_SUBMENU_OFFICES'),
 	'index.php?option=com_schoolsj3&view=offices', $vName == 'offices' );
-	JHtmlSidebar::addEntry( JText::_('COM_SCHOOLSJ3_SUBMENU_MUNICIPALITIES'),
+	Sidebar::addEntry( Text::_('COM_SCHOOLSJ3_SUBMENU_MUNICIPALITIES'),
 	'index.php?option=com_schoolsj3&view=municipalities', $vName == 'municipalities' );
-	JHtmlSidebar::addEntry( JText::_('COM_SCHOOLSJ3_SUBMENU_SHIFTS'),
+	Sidebar::addEntry( Text::_('COM_SCHOOLSJ3_SUBMENU_SHIFTS'),
 	'index.php?option=com_schoolsj3&view=shifts', $vName == 'shifts' );
-	JHtmlSidebar::addEntry( JText::_('COM_SCHOOLSJ3_SUBMENU_UNITS'),
+	Sidebar::addEntry( Text::_('COM_SCHOOLSJ3_SUBMENU_UNITS'),
 	'index.php?option=com_schoolsj3&view=units', $vName == 'units' );
-	JHtmlSidebar::addEntry( JText::_('COM_SCHOOLSJ3_SUBMENU_DISTRICTS'),
+	Sidebar::addEntry( Text::_('COM_SCHOOLSJ3_SUBMENU_DISTRICTS'),
 	'index.php?option=com_schoolsj3&view=districts', $vName == 'districts' );
 
 	//if ($vName == 'categories')
 	//{
-	//    JToolbarHelper::title( JText::sprintf('COM_SCHOOLSJ3_CATEGORIES_TITLE', JText::_('com_schoolsj3')), 'schools-categories');
+	//    JToolbarHelper::title( Text::sprintf('COM_SCHOOLSJ3_CATEGORIES_TITLE', Text::_('com_schoolsj3')), 'schools-categories');
 	//}
 
     }

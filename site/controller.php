@@ -1,21 +1,18 @@
 <?php
+
+use Joomla\CMS\MVC\Controller\BaseController;
+
 defined('_JEXEC') or die;
 
-class Schoolsj3Controller extends JControllerLegacy
+class Schoolsj3Controller extends BaseController
 {
     protected $default_view = 'schools';
 
     public function display($cachable = false, $urlparams = false)
     {
-	// require_once JPATH_COMPONENT.'/helpers/school.php';
+		parent::display();
 
-	$view = $this->input->get('view', 'schools');
-	$layout = $this->input->get('layout', 'default');
-	$id = $this->input->getInt('id');
-
-	parent::display();
-
-	return $this;
+		return $this;
     }
 }
 

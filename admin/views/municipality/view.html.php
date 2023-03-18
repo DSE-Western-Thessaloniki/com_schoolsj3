@@ -1,40 +1,46 @@
 <?php
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\Toolbar\ToolbarHelper;
+
 defined('_JEXEC') or die;
 
-class Schoolsj3ViewMunicipality extends JViewLegacy
+class Schoolsj3ViewMunicipality extends HtmlView
 {
     protected $item;
     protected $form;
 
     public function display($tpl = null)
     {
-	$this->item = $this->get('Item');
-	$this->form = $this->get('Form');
+		$this->item = $this->get('Item');
+		$this->form = $this->get('Form');
 
-	if (count($errors = $this->get('Errors')))
-	{
-	    JError::raiseError(500, implode("\n", $errors));
-	    return false;
-	}
+		if (count($errors = $this->get('Errors')))
+		{
+			throw new \Exception(implode("\n", $errors), 500);
+			return false;
+		}
 
-	$this->addToolbar();
-	parent::display($tpl);
+		$this->addToolbar();
+		parent::display($tpl);
     }
 
     protected function addToolbar()
     {
-	JFactory::getApplication()->input->set('hidemainmenu', true);
-	JToolbarHelper::title(JText::_('COM_SCHOOLSJ3_MANAGER_MUNICIPALITY'), '');
-	JToolbarHelper::save('municipality.save');
+		Factory::getApplication()->getInput()->set('hidemainmenu', true);
+		ToolbarHelper::title(Text::_('COM_SCHOOLSJ3_MANAGER_MUNICIPALITY'), '');
+		ToolbarHelper::save('municipality.save');
 
-	if (empty($this->item->id))
-	{
-	    JToolbarHelper::cancel('municipality.cancel');
-	}
-	else
-	{
-	    JToolbarHelper::cancel('municipality.cancel', 'JTOOLBAR_CLOSE');
-	}
+		if (empty($this->item->id))
+		{
+			ToolbarHelper::cancel('municipality.cancel');
+		}
+		else
+		{
+			ToolbarHelper::cancel('municipality.cancel', 'JTOOLBAR_CLOSE');
+		}
     }
 }
 

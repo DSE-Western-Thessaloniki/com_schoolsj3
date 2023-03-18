@@ -1,7 +1,10 @@
 <?php
+
+use Joomla\CMS\MVC\Controller\FormController;
+
 defined('_JEXEC') or die;
 
-class Schoolsj3ControllerSchool extends JControllerForm
+class Schoolsj3ControllerSchool extends FormController
 {
 
 }

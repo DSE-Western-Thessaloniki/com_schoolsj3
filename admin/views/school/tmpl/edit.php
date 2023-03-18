@@ -1,17 +1,23 @@
 <?php
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
+
 defined('_JEXEC') or die;
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_schoolsj3&view=school&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
+<form action="<?php echo Route::_('index.php?option=com_schoolsj3&view=school&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
     <div class="row-fluid">
 	<div class="span10 form-horizontal">
 	    <fieldset>
-		<?php echo JHtml::_('bootstrap.startPane', 'myTab',
+		<?php echo HTMLHelper::_('bootstrap.startPane', 'myTab',
 			array('active' => 'details')); ?>
-		    <?php echo JHtml::_('bootstrap.addPanel', 'myTab',
+		    <?php echo HTMLHelper::_('bootstrap.addPanel', 'myTab',
 			    'details', empty($this->item->id) ?
-			    JText::_('COM_SCHOOLSJ3_NEW_SCHOOL', true) :
-			    JText::sprintf('COM_SCHOOLSJ3_EDIT_SCHOOL',
+			    Text::_('COM_SCHOOLSJ3_NEW_SCHOOL', true) :
+			    Text::sprintf('COM_SCHOOLSJ3_EDIT_SCHOOL',
 				$this->item->id, true)); ?>
 			<?php foreach ($this->form->getFieldset('schoolfields') as $field) : ?>
 			    <div class="control-group">
@@ -20,7 +26,7 @@ defined('_JEXEC') or die;
 			    </div>
 			<?php endforeach; ?>
 			<?php $mapquery = "SELECT * FROM #__sch3_config WHERE id = 1";
-			    $db = JFactory::getDbo();
+			    $db = Factory::getContainer()->get("DatabaseDriver");
 			    $db->setQuery($mapquery);
 			    $config_rows = $db->loadObjectList();
 			    $confData = $config_rows[0];
@@ -56,10 +62,10 @@ defined('_JEXEC') or die;
 		    </style>
 		    <div id="map-canvas"></div>
 
-		    <?php echo JHtml::_('bootstrap.endPanel'); ?>
+		    <?php echo HTMLHelper::_('bootstrap.endPanel'); ?>
 		    <input type="hidden" name="task" value="" />
-		    <?php echo JHtml::_('form.token'); ?>
-		<?php echo JHtml::_('bootstrap.endPane'); ?>
+		    <?php echo HTMLHelper::_('form.token'); ?>
+		<?php echo HTMLHelper::_('bootstrap.endPane'); ?>
 	    </fieldset>
 	</div>
     </div>

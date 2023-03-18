@@ -1,7 +1,14 @@
 <?php
+
+use Joomla\CMS\HTML\Helpers\Sidebar;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\Toolbar\ToolbarHelper;
+
 defined('_JEXEC') or die;
 
-class Schoolsj3ViewShifts extends JViewLegacy
+class Schoolsj3ViewShifts extends HtmlView
 {
     protected $items;
     protected $state;
@@ -9,59 +16,69 @@ class Schoolsj3ViewShifts extends JViewLegacy
 
     public function display($tpl = null)
     {
-	$this->items = $this->get('Items');
-	$this->state = $this->get('State');
-	$this->pagination = $this->get('Pagination');
+		$this->items = $this->get('Items');
+		$this->state = $this->get('State');
+		$this->pagination = $this->get('Pagination');
 
-	Schoolsj3Helper::addSubmenu('shifts');
+		Schoolsj3Helper::addSubmenu('shifts');
 
-	if (count($errors = $this->get('Errors')))
-	{
-	    JError::raiseError(500, implode("\n", $errors));
-	    return false;
-	}
+		if (count($errors = $this->get('Errors')))
+		{
+			throw new \Exception(implode("\n", $errors), 500);
+			return false;
+		}
 
-	$this->addToolbar();
-	$this->sidebar = JHtmlSidebar::render();
-	parent::display($tpl);
+		$this->addToolbar();
+		$this->sidebar = Sidebar::render();
+		parent::display($tpl);
     }
 
     protected function addToolbar()
     {
-	$canDo = Schoolsj3Helper::getActions();
-	$bar = JToolBar::getInstance('toolbar');
+		$canDo = Schoolsj3Helper::getActions();
 
-	JToolbarHelper::title(JText::_('COM_SCHOOLSJ3_MANAGER_SHIFTS'), '');
-	JToolbarHelper::addNew('shift.add');
+		ToolbarHelper::title(Text::_('COM_SCHOOLSJ3_MANAGER_SHIFTS'), '');
+		ToolbarHelper::addNew('shift.add');
 
-	if ($canDo->get('core.edit'))
-	{
-	    JToolbarHelper::editList('shift.edit');
-	}
-	if ($canDo->get('core.edit.state')) {
-	    JToolbarHelper::publish('shift.publish', 'JTOOLBAR_PUBLISH', true);
-	    JToolbarHelper::unpublish('shift.unpublish', 'JTOOLBAR_UNPUBLISH', true);
-	    JToolbarHelper::archiveList('shift.archive');
-	    JToolbarHelper::checkin('shift.checkin');
-	}
-	$state = $this->get('State');
-	if ($state->get('filter.state') == -2 && $canDo->get('core.delete'))
-	{
-	    JToolbarHelper::deleteList('', 'shift.delete', 'JTOOLBAR_EMPTY_TRASH');
-	} elseif ($canDo->get('core.edit.state'))
-	{
-	    JToolbarHelper::trash('shift.trash');
-	}
-	if ($canDo->get('core.admin'))
-	{
-	    JToolbarHelper::preferences('com_schoolsj3');
-	}
+		if ($canDo->get('core.edit'))
+		{
+			ToolbarHelper::editList('shift.edit');
+		}
+		if ($canDo->get('core.edit.state')) {
+			ToolbarHelper::publish('shift.publish', 'JTOOLBAR_PUBLISH', true);
+			ToolbarHelper::unpublish('shift.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+			ToolbarHelper::archiveList('shift.archive');
+			ToolbarHelper::checkin('shift.checkin');
+		}
+		$state = $this->get('State');
+		if ($state->get('filter.state') == -2 && $canDo->get('core.delete'))
+		{
+			ToolbarHelper::deleteList('', 'shift.delete', 'JTOOLBAR_EMPTY_TRASH');
+		} elseif ($canDo->get('core.edit.state'))
+		{
+			ToolbarHelper::trash('shift.trash');
+		}
+		if ($canDo->get('core.admin'))
+		{
+			ToolbarHelper::preferences('com_schoolsj3');
+		}
 
-	// Adding filters
-	JHtmlSidebar::setAction('index.php?option=com_schoolsj3&view=shifts');
+		// Adding filters
+		Sidebar::setAction('index.php?option=com_schoolsj3&view=shifts');
 
- 	JHtmlSidebar::addFilter( JText::_('JOPTION_SELECT_PUBLISHED'), 'filter_state', JHtml::_('select.options', JHtml::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.state'), true) );
-   }
+		Sidebar::addFilter(
+			Text::_('JOPTION_SELECT_PUBLISHED'), 
+			'filter_state', 
+			HTMLHelper::_(
+				'select.options', 
+				HTMLHelper::_('jgrid.publishedOptions'), 
+				'value', 
+				'text', 
+				$this->state->get('filter.state'), 
+				true
+			)
+		);
+    }
 }
 
 ?>

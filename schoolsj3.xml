@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="3.0" method="upgrade">
+<extension type="component" version="4.0" method="upgrade">
     <name>COM_SCHOOLSJ3</name>
-    <creationDate>21/01/2015</creationDate>
+    <creationDate>18/03/2023</creationDate>
     <author>Theofilos Intzoglou</author>
     <copyright>This component in released under the GNU/GPL License</copyright>
     <authorEmail>int.teo@gmail.com</authorEmail>
-    <version>0.1.3</version>
+    <version>0.1.4</version>
 
     <install>
         <sql>

@@ -1,39 +1,41 @@
 <?php
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Model\AdminModel;
+
 defined('_JEXEC') or die;
 
-class Schoolsj3ModelUnit extends JModelAdmin
+class Schoolsj3ModelUnit extends AdminModel
 {
     protected $text_prefix = 'COM_SCHOOLSJ3';
 
     public function getTable($type = 'Unit', $prefix = 'Schoolsj3Table', $config = array())
     {
-	return JTable::getInstance($type, $prefix, $config);
+		return $this->getMVCFactory()->createTable($type, $prefix, $config);
     }
 
     public function getForm($data = array(), $loadData = true)
     {
-	$app = JFactory::getApplication();
+		$form = $this->loadForm('com_schoolsj3.unit', 'unit', array('control' => 'jform', 'load_data' => $loadData));
 
-	$form = $this->loadForm('com_schoolsj3.unit', 'unit', array('control' => 'jform', 'load_data' => $loadData));
+		if (empty($form))
+		{
+			return false;
+		}
 
-	if (empty($form))
-	{
-	    return false;
-	}
-
-	return $form;
+		return $form;
     }
 
     protected function loadFormData()
     {
-	$data = JFactory::getApplication()->getUserState('com_schoolsj3.edit.unit.data', array());
+		$data = Factory::getApplication()->getUserState('com_schoolsj3.edit.unit.data', array());
 
-	if (empty($data))
-	{
-	    $data = $this->getItem();
-	}
+		if (empty($data))
+		{
+			$data = $this->getItem();
+		}
 
-	return $data;
+		return $data;
     }
 
     protected function prepareTable($table)

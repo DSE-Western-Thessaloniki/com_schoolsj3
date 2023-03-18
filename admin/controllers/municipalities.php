@@ -1,12 +1,15 @@
 <?php
+
+use Joomla\CMS\MVC\Controller\AdminController;
+
 defined('_JEXEC') or die;
 
-class Schoolsj3ControllerMunicipalities extends JControllerAdmin
+class Schoolsj3ControllerMunicipalities extends AdminController
 {
     public function getModel($name = 'Municipality', $prefix = 'Schoolsj3Model', $config = array('ignore_request' => true))
     {
-	$model = parent::getModel($name, $prefix, $config);
-	return $model;
+        $model = parent::getModel($name, $prefix, $config);
+        return $model;
     }
 }
 

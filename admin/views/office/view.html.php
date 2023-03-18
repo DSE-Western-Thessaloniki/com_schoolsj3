@@ -1,40 +1,46 @@
 <?php
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\Toolbar\ToolbarHelper;
+
 defined('_JEXEC') or die;
 
-class Schoolsj3ViewOffice extends JViewLegacy
+class Schoolsj3ViewOffice extends HtmlView
 {
     protected $item;
     protected $form;
 
     public function display($tpl = null)
     {
-	$this->item = $this->get('Item');
-	$this->form = $this->get('Form');
+		$this->item = $this->get('Item');
+		$this->form = $this->get('Form');
 
-	if (count($errors = $this->get('Errors')))
-	{
-	    JError::raiseError(500, implode("\n", $errors));
-	    return false;
-	}
+		if (count($errors = $this->get('Errors')))
+		{
+			throw new \Exception(implode("\n", $errors), 500);
+			return false;
+		}
 
-	$this->addToolbar();
-	parent::display($tpl);
+		$this->addToolbar();
+		parent::display($tpl);
     }
 
     protected function addToolbar()
     {
-	JFactory::getApplication()->input->set('hidemainmenu', true);
-	JToolbarHelper::title(JText::_('COM_SCHOOLSJ3_MANAGER_OFFICE'), '');
-	JToolbarHelper::save('office.save');
+		Factory::getApplication()->getInput()->set('hidemainmenu', true);
+		ToolbarHelper::title(Text::_('COM_SCHOOLSJ3_MANAGER_OFFICE'), '');
+		ToolbarHelper::save('office.save');
 
-	if (empty($this->item->id))
-	{
-	    JToolbarHelper::cancel('office.cancel');
-	}
-	else
-	{
-	    JToolbarHelper::cancel('office.cancel', 'JTOOLBAR_CLOSE');
-	}
+		if (empty($this->item->id))
+		{
+			ToolbarHelper::cancel('office.cancel');
+		}
+		else
+		{
+			ToolbarHelper::cancel('office.cancel', 'JTOOLBAR_CLOSE');
+		}
     }
 }
 
