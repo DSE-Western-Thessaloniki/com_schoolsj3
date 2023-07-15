@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="schoolfields">
+        <field name="id" type="text" default="0" label="JGLOBAL_FIELD_ID_LABEL" readonly="true" class="readonly" description="JGLOBAL_FIELD_ID_DESC"/>
+        <field name="description" type="text" class="inputbox" size="40" label="JGLOBAL_TITLE" required="true" />
+        <field name="cat_id" type="sql" label="COM_SCHOOLSJ3_FIELD_CATEGORY_LABEL" query="SELECT id AS value, description AS cat_id FROM #__sch3_categories" required="true" />
+        <field name="off_id" type="sql" label="COM_SCHOOLSJ3_FIELD_OFFICE_LABEL" query="SELECT id AS value, description AS off_id FROM #__sch3_offices" required="true" />
+        <field name="mun_id" type="sql" label="COM_SCHOOLSJ3_FIELD_MUNICIPALITY_LABEL" query="SELECT id AS value, description AS mun_id FROM #__sch3_municipalities" required="true" />
+        <field name="shi_id" type="sql" label="COM_SCHOOLSJ3_FIELD_SHIFT_LABEL" query="SELECT id AS value, description AS shi_id FROM #__sch3_shifts" required="true" />
+        <field name="uni_id" type="sql" label="COM_SCHOOLSJ3_FIELD_UNITS_LABEL" query="SELECT id AS value, units AS uni_id FROM #__sch3_units" required="true" />
+        <field name="dis_id" type="sql" label="COM_SCHOOLSJ3_FIELD_DISTRICT_LABEL" query="SELECT id AS value, description AS dis_id FROM #__sch3_districts" required="true" />
+        <field name="edu_id" type="text" class="inputbox" size="40" label="COM_SCHOOLSJ3_FIELD_SCHOOLCODE_LABEL" />
+        <field name="phone" type="tel" id="phone" size="30" label="COM_SCHOOLSJ3_FIELD_TELEPHONE_LABEL" filter="string" validate="tel" />
+        <field name="fax" type="tel" id="fax" size="30" label="COM_SCHOOLSJ3_FIELD_FAX_LABEL" filter="string" validate="tel" />
+        <field name="email" type="email" class="inputbox" size="30" label="JGLOBAL_EMAIL" validate="email" />
+        <field name="website" type="url" class="inputbox" size="30" label="COM_SCHOOLSJ3_FIELD_WEBSITE_LABEL" validate="url" />
+        <field name="address" type="text" class="inputbox" size="40" label="COM_SCHOOLSJ3_FIELD_ADDRESS_LABEL" />
+        <field name="postcode" type="text" class="inputbox" size="40" label="COM_SCHOOLSJ3_FIELD_POSTALCODE_LABEL" />
+        <field name="area" type="text" class="inputbox" size="40" label="COM_SCHOOLSJ3_FIELD_AREA_LABEL" />
+        <field name="lat" type="text" class="inputbox" size="40" label="COM_SCHOOLSJ3_FIELD_LATITUDE_LABEL" />
+        <field name="lng" type="text" class="inputbox" size="40" label="COM_SCHOOLSJ3_FIELD_LONGITUDE_LABEL" />
+    </fields>
+</form>
