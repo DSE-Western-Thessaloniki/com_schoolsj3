@@ -1,10 +1,12 @@
 <?php
 
-use Joomla\CMS\MVC\View\HtmlView;
+namespace DSEWestThessaloniki\Component\Schoolsj3\Site\View;
+
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 
 defined('_JEXEC') or die;
 
-class Schoolsj3ViewMap extends HtmlView
+class HtmlView extends BaseHtmlView
 {
     protected $items;
 
@@ -12,6 +14,7 @@ class Schoolsj3ViewMap extends HtmlView
     {
 		$this->items = $this->get('Items');
 		$this->state = $this->get('State');
+		$this->pagination = $this->get('Pagination');
 
 		if (count($errors = $this->get('Errors')))
 		{

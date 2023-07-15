@@ -1,5 +1,7 @@
 <?php
 
+namespace DSEWestThessaloniki\Component\Schoolsj3\Site\Controller;
+
 use Joomla\CMS\MVC\Controller\BaseController;
 
 defined('_JEXEC') or die;

@@ -1,10 +1,12 @@
 <?php
 
+namespace DSEWestThessaloniki\Component\Schoolsj3\Site\Model;
+
 use Joomla\CMS\MVC\Model\ListModel;
 
 defined('_JEXEC') or die;
 
-class Schoolsj3ModelSchools extends ListModel
+class SchoolsModel extends ListModel
 {
     public function __construct($config = array())
     {

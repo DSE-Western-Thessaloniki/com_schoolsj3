@@ -1,10 +1,12 @@
 <?php
 
-use Joomla\CMS\MVC\View\HtmlView;
+namespace DSEWestThessaloniki\Component\Schoolsj3\Site\View;
+
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 
 defined('_JEXEC') or die;
 
-class Schoolsj3ViewSchool extends HtmlView
+class HtmlView extends BaseHtmlView
 {
     protected $item;
 

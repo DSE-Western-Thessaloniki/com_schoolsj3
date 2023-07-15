@@ -1,11 +1,13 @@
 <?php
 
+namespace DSEWestThessaloniki\Component\Schoolsj3\Site\Model;
+
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\ItemModel;
 
 defined('_JEXEC') or die;
 
-class Schoolsj3ModelSchool extends ItemModel
+class SchoolModel extends ItemModel
 {
     protected $text_prefix = 'COM_SCHOOLSJ3';
 
@@ -40,15 +42,17 @@ class Schoolsj3ModelSchool extends ItemModel
 		return $this->_item[$id];
     }
 
-    public function getTable($type = 'School', $prefix = 'Schoolsj3Table', $config = array())
+    public function getTable($type = 'School', $prefix = '', $config = array())
     {
 		return $this->getMVCFactory()->createTable($type, $prefix, $config);
     }
 
     protected function prepareTable($table)
     {
-		// FIX: We need to transform all fields...
+		$table->id = (int) $table->id;
 		$table->description = htmlspecialchars_decode($table->description, ENT_QUOTES);
+		$table->markertext = htmlspecialchars_decode($table->markertext, ENT_QUOTES);
+		$table->markercolor = htmlspecialchars_decode($table->markercolor, ENT_QUOTES);
     }
 }
 

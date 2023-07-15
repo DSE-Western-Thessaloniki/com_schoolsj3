@@ -1,10 +1,12 @@
 <?php
 
+namespace DSEWestThessaloniki\Component\Schoolsj3\Site\Table;
+
 use Joomla\CMS\Table\Table;
 
 defined('_JEXEC') or die;
 
-class Schoolsj3TableSchool extends Table
+class SchoolTable extends Table
 {
     public function __construct($table, $key, $db)
     {
