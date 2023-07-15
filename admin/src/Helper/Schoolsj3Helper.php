@@ -41,29 +41,6 @@ class Schoolsj3Helper
 		return $result;
     }
 
-    public static function addSubmenu($vName = 'schools')
-    {
-		Sidebar::addEntry(Text::_('COM_SCHOOLSJ3_SUBMENU_SCHOOLS'),
-		'index.php?option=com_schoolsj3&view=schools', $vName == 'schools' );
-		Sidebar::addEntry( Text::_('COM_SCHOOLSJ3_SUBMENU_CATEGORIES'),
-		'index.php?option=com_schoolsj3&view=categories', $vName == 'categories' );
-		Sidebar::addEntry( Text::_('COM_SCHOOLSJ3_SUBMENU_OFFICES'),
-		'index.php?option=com_schoolsj3&view=offices', $vName == 'offices' );
-		Sidebar::addEntry( Text::_('COM_SCHOOLSJ3_SUBMENU_MUNICIPALITIES'),
-		'index.php?option=com_schoolsj3&view=municipalities', $vName == 'municipalities' );
-		Sidebar::addEntry( Text::_('COM_SCHOOLSJ3_SUBMENU_SHIFTS'),
-		'index.php?option=com_schoolsj3&view=shifts', $vName == 'shifts' );
-		Sidebar::addEntry( Text::_('COM_SCHOOLSJ3_SUBMENU_UNITS'),
-		'index.php?option=com_schoolsj3&view=units', $vName == 'units' );
-		Sidebar::addEntry( Text::_('COM_SCHOOLSJ3_SUBMENU_DISTRICTS'),
-		'index.php?option=com_schoolsj3&view=districts', $vName == 'districts' );
-
-		//if ($vName == 'categories')
-		//{
-		//    JToolbarHelper::title( Text::sprintf('COM_SCHOOLSJ3_CATEGORIES_TITLE', Text::_('com_schoolsj3')), 'schools-categories');
-		//}
-    }
-
 }
 
 ?>

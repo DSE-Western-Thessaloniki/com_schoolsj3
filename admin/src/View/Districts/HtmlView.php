@@ -23,8 +23,6 @@ class HtmlView extends BaseHtmlView
 	$this->state = $this->get('State');
 	$this->pagination = $this->get('Pagination');
 
-	Schoolsj3Helper::addSubmenu('districts');
-
 	if (count($errors = $this->get('Errors')))
 	{
 		throw new \Exception(implode("\n", $errors), 500);
