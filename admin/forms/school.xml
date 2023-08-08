@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-    <fields name="schoolfields">
+    <fieldset name="schoolfields">
         <field name="id" type="text" default="0" label="JGLOBAL_FIELD_ID_LABEL" readonly="true" class="readonly" description="JGLOBAL_FIELD_ID_DESC"/>
         <field name="description" type="text" class="inputbox" size="40" label="JGLOBAL_TITLE" required="true" />
         <field name="cat_id" type="sql" label="COM_SCHOOLSJ3_FIELD_CATEGORY_LABEL" query="SELECT id AS value, description AS cat_id FROM #__sch3_categories" required="true" />
@@ -19,5 +19,5 @@
         <field name="area" type="text" class="inputbox" size="40" label="COM_SCHOOLSJ3_FIELD_AREA_LABEL" />
         <field name="lat" type="text" class="inputbox" size="40" label="COM_SCHOOLSJ3_FIELD_LATITUDE_LABEL" />
         <field name="lng" type="text" class="inputbox" size="40" label="COM_SCHOOLSJ3_FIELD_LONGITUDE_LABEL" />
-    </fields>
+    </fieldset>
 </form>
