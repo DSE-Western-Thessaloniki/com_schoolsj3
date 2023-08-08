@@ -4,8 +4,6 @@ namespace DSEWestThessaloniki\Component\Schoolsj3\Administrator\Helper;
 
 use Joomla\CMS\Access\Access;
 use Joomla\CMS\Factory;
-use Joomla\CMS\HTML\Helpers\Sidebar;
-use Joomla\CMS\Language\Text;
 use Joomla\Registry\Registry;
 
 defined('_JEXEC') or die;
@@ -29,7 +27,7 @@ class Schoolsj3Helper
 		}
 
 		$actions = Access::getActionsFromFile(
-			"../access.xml", 
+			__DIR__ . "/../../access.xml", 
 			"/access/section[@name='$level']/"
 		);
 
