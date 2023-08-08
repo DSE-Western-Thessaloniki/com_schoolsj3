@@ -24,11 +24,8 @@
 
     <files folder="site">
         <folder>assets</folder>
-        <folder>controllers</folder>
-        <folder>helpers</folder>
-        <folder>models</folder>
-        <folder>tables</folder>
-        <folder>views</folder>
+        <folder>src</folder>
+        <folder>tmpl</folder>
 
         <filename>index.html</filename>
     </files>
