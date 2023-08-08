@@ -11,9 +11,9 @@ defined('_JEXEC') or die;
     <div class="row-fluid">
 	<div class="span10 form-horizontal">
 	    <fieldset>
-		<?php echo HTMLHelper::_('bootstrap.startPane', 'myTab',
+		<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab',
 			array('active' => 'details')); ?>
-		    <?php echo HTMLHelper::_('bootstrap.addPanel', 'myTab',
+		    <?php echo HTMLHelper::_('uitab.addTab', 'myTab',
 			    'details', empty($this->item->id) ?
 			    Text::_('COM_SCHOOLSJ3_NEW_DISTRICT', true) :
 			    Text::sprintf('COM_SCHOOLSJ3_EDIT_DISTRICT',
@@ -24,10 +24,10 @@ defined('_JEXEC') or die;
 				<div class="controls"><?php echo $field->input; ?></div>
 			    </div>
 			<?php endforeach; ?>
-		    <?php echo HTMLHelper::_('bootstrap.endPanel'); ?>
+		    <?php echo HTMLHelper::_('uitab.endTab'); ?>
 		    <input type="hidden" name="task" value="" />
 		    <?php echo HTMLHelper::_('form.token'); ?>
-		<?php echo HTMLHelper::_('bootstrap.endPane'); ?>
+		<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
 	    </fieldset>
 	</div>
     </div>
