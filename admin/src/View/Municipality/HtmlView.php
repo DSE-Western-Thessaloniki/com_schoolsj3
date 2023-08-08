@@ -4,12 +4,12 @@ namespace DSEWestThessaloniki\Component\Schoolsj3\Administrator\View\Municipalit
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
-use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
 defined('_JEXEC') or die;
 
-class Schoolsj3ViewMunicipality extends HtmlView
+class HtmlView extends BaseHtmlView
 {
     protected $item;
     protected $form;
