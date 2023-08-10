@@ -1,0 +1,78 @@
+<form addfieldprefix="DSEWestThessaloniki\Component\Schoolsj3\Administrator\Field">
+    <fields name="filter">
+        
+        <field
+            name="search"
+            type="text"
+            inputmode="search"
+            label="COM_SCHOOLSJ3_SEARCH_IN_TITLE"
+            hint="JSEARCH_FILTER" />
+            
+        <field
+            name="published"
+            type="status"
+            label="JSTATUS"
+            class="js-select-submit-on-change">
+            <option value="">JOPTION_SELECT_PUBLISHED</option>
+        </field>
+
+        <field
+            name="category"
+            label="COM_SCHOOLSJ3_FILTER_CATEGORY"
+            type="SchoolCategory"
+            class="js-select-submit-on-change">
+            <option value="">COM_SCHOOLSJ3_FILTER_CATEGORY</option>
+        </field>
+
+        <field
+            name="office"
+            label="COM_SCHOOLSJ3_FILTER_OFFICE"
+            type="SchoolOffice"
+            class="js-select-submit-on-change">
+            <option value="">COM_SCHOOLSJ3_FILTER_OFFICE</option>
+        </field>
+
+        <field
+            name="municipality"
+            label="COM_SCHOOLSJ3_FILTER_MUNICIPALITY"
+            type="SchoolMunicipality"
+            class="js-select-submit-on-change">
+            <option value="">COM_SCHOOLSJ3_FILTER_MUNICIPALITY</option>
+        </field>
+
+        <field
+            name="shift"
+            label="COM_SCHOOLSJ3_FILTER_SHIFT"
+            type="SchoolShift"
+            class="js-select-submit-on-change">
+            <option value="">COM_SCHOOLSJ3_FILTER_SHIFT</option>
+        </field>
+
+        <field
+            name="units"
+            label="COM_SCHOOLSJ3_FILTER_UNITS"
+            type="SchoolUnit"
+            class="js-select-submit-on-change">
+            <option value="">COM_SCHOOLSJ3_FILTER_UNITS</option>
+        </field>
+
+        <field
+            name="district"
+            label="COM_SCHOOLSJ3_FILTER_DISTRICT"
+            type="SchoolDistrict"
+            class="js-select-submit-on-change">
+            <option value="">COM_SCHOOLSJ3_FILTER_DISTRICT</option>
+        </field>
+
+    </fields>
+    
+    <fields name="list">
+        
+        <field
+            name="limit"
+            type="limitbox"
+            label="JGLOBAL_LIST_LIMIT"
+            onchange="this.form.submit();" />
+    
+    </fields>
+</form>

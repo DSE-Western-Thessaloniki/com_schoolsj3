@@ -28,7 +28,7 @@ class DistrictsModel extends ListModel
 		// Get state from filters
 		$search = $this->getUserStateFromRequest($this->context.'.filter.search', 'filter_search');
 		$this->setState('filter.search', $search);
-		$published = $this->getUserStateFromRequest($this->context.'.filter.state', 'filter_state', '', 'string');
+		$published = $this->getUserStateFromRequest($this->context.'.filter.state', 'filter_published', '', 'string');
 		$this->setState('filter.state', $published);
 		parent::populateState('a.description', 'asc');
     }

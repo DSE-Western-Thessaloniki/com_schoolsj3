@@ -15,7 +15,7 @@ class SchoolsModel extends ListModel
 			$config['filter_fields'] = array(
 				'id', 'a.id',
 				'schoolname', 'a.description',
-				'category', 'cat.description',
+				'category', 'cat.description', 'category_id',
 				'office', 'off.description',
 				'municipality', 'mun.description',
 				'shift', 'shi.description',
@@ -34,7 +34,7 @@ class SchoolsModel extends ListModel
 		// Get state from filters
 		$search = $this->getUserStateFromRequest($this->context.'.filter.search', 'filter_search');
 		$this->setState('filter.search', $search);
-		$published = $this->getUserStateFromRequest($this->context.'.filter.state', 'filter_state', '', 'string');
+		$published = $this->getUserStateFromRequest($this->context.'.filter.state', 'filter_published', '', 'string');
 		$this->setState('filter.state', $published);
 		$category = $this->getUserStateFromRequest($this->context.'.filter.category', 'filter_category', '', 'string');
 		$this->setState('filter.category', $category);
