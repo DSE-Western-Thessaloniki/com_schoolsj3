@@ -6,16 +6,22 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
 
-defined('_JEXEC') or die;
+defined("_JEXEC") or die();
 ?>
 
-<form action="<?php echo Route::_('index.php?option=com_schoolsj3&view=map'); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo Route::_(
+    "index.php?option=com_schoolsj3&view=map"
+); ?>" method="post" name="adminForm" id="adminForm">
 
 	<!-- Filterbar -->
 	<div id="filter-bar" class="btn-toolbar">
 	    <div class="btn-group pull-left">
-		<button class="btn" type="button" onclick="window.location.href='index.php?option=com_schoolsj3&view=allsch&format=xls'"><?php echo Text::_('COM_SCHOOLSJ3_EXPORT_XLS')?></button>
-		<button class="btn" type="button" onclick="window.location.href='index.php?option=com_schoolsj3&view=schools'"><?php echo Text::_('COM_SCHOOLSJ3_SHOW_TABLE')?></button>
+		<button class="btn" type="button" onclick="window.location.href='index.php?option=com_schoolsj3&view=allsch&format=xls'"><?php echo Text::_(
+      "COM_SCHOOLSJ3_EXPORT_XLS"
+  ); ?></button>
+		<button class="btn" type="button" onclick="window.location.href='index.php?option=com_schoolsj3&view=schools'"><?php echo Text::_(
+      "COM_SCHOOLSJ3_SHOW_TABLE"
+  ); ?></button>
 	    </div>
 	</div>
 
@@ -24,150 +30,210 @@ defined('_JEXEC') or die;
 	    <thead>
 		<tr>
 		    <th width="1%" class="hidden-phone">
-			<?php echo '#' ?>
+			<?php echo "#"; ?>
 		    </th>
 		    <th>
-			<?php echo Text::_('JGLOBAL_TITLE'); ?>
+			<?php echo Text::_("JGLOBAL_TITLE"); ?>
 		    </th>
 		    <th>
-			<?php echo Text::_('COM_SCHOOLSJ3_HEADING_CATEGORY'); ?>
+			<?php echo Text::_("COM_SCHOOLSJ3_HEADING_CATEGORY"); ?>
 		    </th>
 		    <th>
-			<?php echo Text::_('COM_SCHOOLSJ3_HEADING_OFFICE'); ?>
+			<?php echo Text::_("COM_SCHOOLSJ3_HEADING_OFFICE"); ?>
 		    </th>
 		    <th>
-			<?php echo Text::_('COM_SCHOOLSJ3_HEADING_MUNICIPALITY'); ?>
+			<?php echo Text::_("COM_SCHOOLSJ3_HEADING_MUNICIPALITY"); ?>
 		    </th>
 		    <th>
-			<?php echo Text::_('COM_SCHOOLSJ3_HEADING_SHIFT'); ?>
+			<?php echo Text::_("COM_SCHOOLSJ3_HEADING_SHIFT"); ?>
 		    </th>
 		    <th>
-			<?php echo Text::_('COM_SCHOOLSJ3_HEADING_UNITS'); ?>
+			<?php echo Text::_("COM_SCHOOLSJ3_HEADING_UNITS"); ?>
 		    </th>
 		    <th>
-			<?php echo Text::_('COM_SCHOOLSJ3_HEADING_DISTRICT'); ?>
+			<?php echo Text::_("COM_SCHOOLSJ3_HEADING_DISTRICT"); ?>
 		    </th>
 		</tr>
 		<tr>
 		    <th></th>
 		    <th class="sectiontableheader">
 			<input type="text" name="filter_search" id="filter_search"
-			    placeholder="<?php echo Text::_('COM_SCHOOLSJ3_SEARCH_IN_TITLE'); ?>"
-			    value="<?php echo $this->escape($this->state->get('filter.search')); ?>"
-			    title="<?php echo Text::_('COM_SCHOOLSJ3_SEARCH_IN_TITLE'); ?>" />
+			    placeholder="<?php echo Text::_("COM_SCHOOLSJ3_SEARCH_IN_TITLE"); ?>"
+			    value="<?php echo $this->escape($this->state->get("filter.search")); ?>"
+			    title="<?php echo Text::_("COM_SCHOOLSJ3_SEARCH_IN_TITLE"); ?>" />
 		    </th>
 		    <th class="sectiontableheader">
 		       <select class="inputbox" name="filter_category" id="filter_category" onchange="this.form.submit()">
 			   <option value="">
-			       <?php echo Text::_('COM_SCHOOLSJ3_FILTER_CATEGORY');?>
+			       <?php echo Text::_("COM_SCHOOLSJ3_FILTER_CATEGORY"); ?>
 			   </option>
 			   <?php
-			    $db   = Factory::getContainer()->get("DatabaseDriver");
-			    $query = "SELECT id, description FROM #__sch3_categories";
-			    $db->setQuery($query);
-			    $rows = $db->loadObjectList();
-			    $options = array();
-			    foreach ($rows as $row)
-			    {
-			       $options[] = HTMLHelper::_('select.option', "$row->id", Text::_($row->description));
-			    }
-			    echo HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.category'), true);
-			    ?>
+      $db = Factory::getContainer()->get("DatabaseDriver");
+      $query = "SELECT id, description FROM #__sch3_categories";
+      $db->setQuery($query);
+      $rows = $db->loadObjectList();
+      $options = [];
+      foreach ($rows as $row) {
+          $options[] = HTMLHelper::_(
+              "select.option",
+              "$row->id",
+              Text::_($row->description)
+          );
+      }
+      echo HTMLHelper::_(
+          "select.options",
+          $options,
+          "value",
+          "text",
+          $this->state->get("filter.category"),
+          true
+      );
+      ?>
 			</select>
 		    </th>
 		    <th class="sectiontableheader">
 		       <select class="inputbox" name="filter_office" id="filter_office" onchange="this.form.submit()">
 			   <option value="">
-			       <?php echo Text::_('COM_SCHOOLSJ3_FILTER_OFFICE');?>
+			       <?php echo Text::_("COM_SCHOOLSJ3_FILTER_OFFICE"); ?>
 			   </option>
 			   <?php
-			    $db   = Factory::getContainer()->get("DatabaseDriver");
-			    $query = "SELECT id, description FROM #__sch3_offices";
-			    $db->setQuery($query);
-			    $rows = $db->loadObjectList();
-			    $options = array();
-			    foreach ($rows as $row)
-			    {
-			       $options[] = HTMLHelper::_('select.option', "$row->id", Text::_($row->description));
-			    }
-			    echo HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.office'), true);
-			    ?>
+      $db = Factory::getContainer()->get("DatabaseDriver");
+      $query = "SELECT id, description FROM #__sch3_offices";
+      $db->setQuery($query);
+      $rows = $db->loadObjectList();
+      $options = [];
+      foreach ($rows as $row) {
+          $options[] = HTMLHelper::_(
+              "select.option",
+              "$row->id",
+              Text::_($row->description)
+          );
+      }
+      echo HTMLHelper::_(
+          "select.options",
+          $options,
+          "value",
+          "text",
+          $this->state->get("filter.office"),
+          true
+      );
+      ?>
 			</select>
 		    </th>
 		    <th class="sectiontableheader">
 		       <select class="inputbox" name="filter_municipality" id="filter_municipality" onchange="this.form.submit()">
 			   <option value="">
-			       <?php echo Text::_('COM_SCHOOLSJ3_FILTER_MUNICIPALITY');?>
+			       <?php echo Text::_("COM_SCHOOLSJ3_FILTER_MUNICIPALITY"); ?>
 			   </option>
 			   <?php
-			    $db   = Factory::getContainer()->get("DatabaseDriver");
-			    $query = "SELECT id, description FROM #__sch3_municipalities";
-			    $db->setQuery($query);
-			    $rows = $db->loadObjectList();
-			    $options = array();
-			    foreach ($rows as $row)
-			    {
-			       $options[] = HTMLHelper::_('select.option', "$row->id", Text::_($row->description));
-			    }
-			    echo HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.municipality'), true);
-			    ?>
+      $db = Factory::getContainer()->get("DatabaseDriver");
+      $query = "SELECT id, description FROM #__sch3_municipalities";
+      $db->setQuery($query);
+      $rows = $db->loadObjectList();
+      $options = [];
+      foreach ($rows as $row) {
+          $options[] = HTMLHelper::_(
+              "select.option",
+              "$row->id",
+              Text::_($row->description)
+          );
+      }
+      echo HTMLHelper::_(
+          "select.options",
+          $options,
+          "value",
+          "text",
+          $this->state->get("filter.municipality"),
+          true
+      );
+      ?>
 			</select>
 		    </th>
 		    <th class="sectiontableheader">
 		       <select class="inputbox" name="filter_shift" id="filter_shift" onchange="this.form.submit()">
 			   <option value="">
-			       <?php echo Text::_('COM_SCHOOLSJ3_FILTER_SHIFT');?>
+			       <?php echo Text::_("COM_SCHOOLSJ3_FILTER_SHIFT"); ?>
 			   </option>
 			   <?php
-			    $db   = Factory::getContainer()->get("DatabaseDriver");
-			    $query = "SELECT id, description FROM #__sch3_shifts";
-			    $db->setQuery($query);
-			    $rows = $db->loadObjectList();
-			    $options = array();
-			    foreach ($rows as $row)
-			    {
-			       $options[] = HTMLHelper::_('select.option', "$row->id", Text::_($row->description));
-			    }
-			    echo HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.shift'), true);
-			    ?>
+      $db = Factory::getContainer()->get("DatabaseDriver");
+      $query = "SELECT id, description FROM #__sch3_shifts";
+      $db->setQuery($query);
+      $rows = $db->loadObjectList();
+      $options = [];
+      foreach ($rows as $row) {
+          $options[] = HTMLHelper::_(
+              "select.option",
+              "$row->id",
+              Text::_($row->description)
+          );
+      }
+      echo HTMLHelper::_(
+          "select.options",
+          $options,
+          "value",
+          "text",
+          $this->state->get("filter.shift"),
+          true
+      );
+      ?>
 			</select>
 		    </th>
 		    <th class="sectiontableheader">
 		       <select class="inputbox" name="filter_units" id="filter_units" onchange="this.form.submit()">
 			   <option value="">
-			       <?php echo Text::_('COM_SCHOOLSJ3_FILTER_UNITS');?>
+			       <?php echo Text::_("COM_SCHOOLSJ3_FILTER_UNITS"); ?>
 			   </option>
 			   <?php
-			    $db   = Factory::getContainer()->get("DatabaseDriver");
-			    $query = "SELECT id, units FROM #__sch3_units";
-			    $db->setQuery($query);
-			    $rows = $db->loadObjectList();
-			    $options = array();
-			    foreach ($rows as $row)
-			    {
-			       $options[] = HTMLHelper::_('select.option', "$row->id", Text::_($row->units));
-			    }
-			    echo HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.units'), true);
-			    ?>
+      $db = Factory::getContainer()->get("DatabaseDriver");
+      $query = "SELECT id, units FROM #__sch3_units";
+      $db->setQuery($query);
+      $rows = $db->loadObjectList();
+      $options = [];
+      foreach ($rows as $row) {
+          $options[] = HTMLHelper::_(
+              "select.option",
+              "$row->id",
+              Text::_($row->units)
+          );
+      }
+      echo HTMLHelper::_(
+          "select.options",
+          $options,
+          "value",
+          "text",
+          $this->state->get("filter.units"),
+          true
+      );
+      ?>
 			</select>
 		    </th>
 		    <th class="sectiontableheader">
 		       <select class="inputbox" name="filter_district" id="filter_district" onchange="this.form.submit()">
 			   <option value="">
-			       <?php echo Text::_('COM_SCHOOLSJ3_FILTER_DISTRICT');?>
+			       <?php echo Text::_("COM_SCHOOLSJ3_FILTER_DISTRICT"); ?>
 			   </option>
 			   <?php
-			    $db   = Factory::getContainer()->get("DatabaseDriver");
-			    $query = "SELECT id, description FROM #__sch3_districts";
-			    $db->setQuery($query);
-			    $rows = $db->loadObjectList();
-			    $options = array();
-			    foreach ($rows as $row)
-			    {
-			       $options[] = HTMLHelper::_('select.option', "$row->id", Text::_($row->description));
-			    }
-			    echo HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.district'), true);
-			    ?>
+      $db = Factory::getContainer()->get("DatabaseDriver");
+      $query = "SELECT id, description FROM #__sch3_districts";
+      $db->setQuery($query);
+      $rows = $db->loadObjectList();
+      $options = [];
+      foreach ($rows as $row) {
+          $options[] = HTMLHelper::_(
+              "select.option",
+              "$row->id",
+              Text::_($row->description)
+          );
+      }
+      echo HTMLHelper::_(
+          "select.options",
+          $options,
+          "value",
+          "text",
+          $this->state->get("filter.district"),
+          true
+      );
+      ?>
 			</select>
 		    </th>
 		</tr>
@@ -178,42 +244,50 @@ defined('_JEXEC') or die;
 			<div id="controlDiv" style="display:none">
 			    <div id="controlUI">
 				<div id="controlText">
-				    <button id="directionsbutton"><?php echo Text::_('COM_SCHOOLSJ3_GET_DIRECTIONS'); ?></button>
+				    <button id="directionsbutton"><?php echo Text::_(
+            "COM_SCHOOLSJ3_GET_DIRECTIONS"
+        ); ?></button>
 				    <table id="directionsmainform" style="display:none">
 					<tr>
 					    <td>
 						<table>
 						    <tr>
-							<td><?php echo Text::_('COM_SCHOOLSJ3_FROM'); ?>:</td>
+							<td><?php echo Text::_("COM_SCHOOLSJ3_FROM"); ?>:</td>
 							<td id="autocomptd"><input class="inputbox" id="autocomplete"></input></td>
 						    </tr>
 						    <tr>
-							<td><?php echo Text::_('COM_SCHOOLSJ3_TO'); ?>:</td>
+							<td><?php echo Text::_("COM_SCHOOLSJ3_TO"); ?>:</td>
 							<td id="schoolcombotd">
 							   <select class="inputbox" name="schoolcombo" id="schoolcombo">
 							       <option value="">
-								   <?php echo Text::_('COM_SCHOOLSJ3_SCHOOLS_COMBO');?>
+								   <?php echo Text::_("COM_SCHOOLSJ3_SCHOOLS_COMBO"); ?>
 							       </option>
 							       <?php
-								$db   = Factory::getContainer()->get("DatabaseDriver");
-								$query = "SELECT id, description, lat, lng FROM #__sch3_schools";
-								$db->setQuery($query);
-								$rows = $db->loadObjectList();
-								$options = array();
-								?>
+              $db = Factory::getContainer()->get("DatabaseDriver");
+              $query = "SELECT id, description, lat, lng FROM #__sch3_schools";
+              $db->setQuery($query);
+              $rows = $db->loadObjectList();
+              $options = [];
+              ?>
 								<script type="text/javascript">
 								var schdb = {};
-								<?php
-								foreach ($rows as $row)
-								{
-								   $options[] = HTMLHelper::_('select.option', "$row->id", Text::_($row->description));?>
-								   schdb['<?php echo $row->id; ?>'] = { lat:<?php echo $row->lat; ?> , lng:<?php echo $row->lng;?> };<?php
-								}
-								?>
+								<?php foreach ($rows as $row) {
+            $options[] = HTMLHelper::_(
+                "select.option",
+                "$row->id",
+                Text::_($row->description)
+            ); ?>
+								   schdb['<?php echo $row->id; ?>'] = { lat:<?php echo $row->lat; ?> , lng:<?php echo $row->lng; ?> };<?php
+        } ?>
 								</script>
-								<?php
-								echo HTMLHelper::_('select.options', $options, 'value', 'text', null, true);
-								?>
+								<?php echo HTMLHelper::_(
+            "select.options",
+            $options,
+            "value",
+            "text",
+            null,
+            true
+        ); ?>
 							    </select>
 							</td>
 						    </tr>
@@ -230,28 +304,51 @@ defined('_JEXEC') or die;
 					    <td>
 						<select class="inputbox" name="travelMode" id="travelMode">
 						<?php
-						    $options = array();
-						    $options[] = HTMLHelper::_('select.option', "DRIVING", Text::_('COM_SCHOOLSJ3_TRAVEL_BYCAR'));
-						    $options[] = HTMLHelper::_('select.option', "BICYCLING", Text::_('COM_SCHOOLSJ3_TRAVEL_BYBICYCLE'));
-						    $options[] = HTMLHelper::_('select.option', "TRANSIT", Text::_('COM_SCHOOLSJ3_TRAVEL_BYTRANSIT'));
-						    $options[] = HTMLHelper::_('select.option', "WALKING", Text::_('COM_SCHOOLSJ3_TRAVEL_ONFOOT'));
-						    echo HTMLHelper::_('select.options', $options, 'value', 'text', '1', true);
-						?>
+      $options = [];
+      $options[] = HTMLHelper::_(
+          "select.option",
+          "DRIVING",
+          Text::_("COM_SCHOOLSJ3_TRAVEL_BYCAR")
+      );
+      $options[] = HTMLHelper::_(
+          "select.option",
+          "BICYCLING",
+          Text::_("COM_SCHOOLSJ3_TRAVEL_BYBICYCLE")
+      );
+      $options[] = HTMLHelper::_(
+          "select.option",
+          "TRANSIT",
+          Text::_("COM_SCHOOLSJ3_TRAVEL_BYTRANSIT")
+      );
+      $options[] = HTMLHelper::_(
+          "select.option",
+          "WALKING",
+          Text::_("COM_SCHOOLSJ3_TRAVEL_ONFOOT")
+      );
+      echo HTMLHelper::_(
+          "select.options",
+          $options,
+          "value",
+          "text",
+          "1",
+          true
+      );
+      ?>
 						</select>
-						<button id="getDirections"><?php echo Text::_('COM_SCHOOLSJ3_GET_DIRECTIONS');?></button>
+						<button id="getDirections"><?php echo Text::_(
+          "COM_SCHOOLSJ3_GET_DIRECTIONS"
+      ); ?></button>
 					    </td>
 					</tr>
 				    </table>
 				</div>
 			    </div>
 			</div>
-			<?php HTMLHelper::_('jquery.framework'); ?>
+			<?php HTMLHelper::_("jquery.framework"); ?>
 
-			<?php
-			    require_once JPATH_SITE.'/components/com_schoolsj3/helpers/map.php';
-			?>
+			<?php require_once JPATH_SITE . "/components/com_schoolsj3/helpers/map.php"; ?>
 
-			<div id="map-wrapper" style="width:<?php echo $mapcfg->mapWidth ?>;height:<?php echo $mapcfg->mapHeight?>;">
+			<div id="map-wrapper" style="width:<?php echo $mapcfg->mapWidth; ?>;height:<?php echo $mapcfg->mapHeight; ?>;">
 			    <div id="msmap-canvas"></div>
 			</div>
 
@@ -264,9 +361,9 @@ defined('_JEXEC') or die;
 			    function GetMap()
 			    {
 				msmap = new Microsoft.Maps.Map('#msmap-canvas', {
-				credentials: <?php echo "'".$mapcfg->mapAPIKey."'" ?>,
-				    center: new Microsoft.Maps.Location(<?php echo $mapcfg->mapCenterLat ?>, <?php echo $mapcfg->mapCenterLng ?>),
-				    zoom: <?php echo $mapcfg->mapZoomLevel ?>
+				credentials: <?php echo "'" . $mapcfg->mapAPIKey . "'"; ?>,
+				    center: new Microsoft.Maps.Location(<?php echo $mapcfg->mapCenterLat; ?>, <?php echo $mapcfg->mapCenterLng; ?>),
+				    zoom: <?php echo $mapcfg->mapZoomLevel; ?>
 				});
 				var center = msmap.getCenter();
 				var i=0;
@@ -291,46 +388,68 @@ defined('_JEXEC') or die;
 				//Load the Clustering module.
 				Microsoft.Maps.loadModule("Microsoft.Maps.Clustering", function () {
 
-				    <?php foreach ($this->items as $i => $item) : ?>
-					var latLng = new Microsoft.Maps.Location(<?php echo $item->lat ?>, <?php echo $item->lng ?>);
+				    <?php foreach ($this->items as $i => $item): ?>
+					var latLng = new Microsoft.Maps.Location(<?php echo $item->lat; ?>, <?php echo $item->lng; ?>);
 					<?php
-					$iconpath = Uri::base().'components/com_schoolsj3/assets/icons/';
-					if ($item->category === 'ΓΕΝΙΚΟ ΛΥΚΕΙΟ') {
-					    $schicon = 'icon-gel.png';
-					}
-					else if ($item->category === 'ΓΥΜΝΑΣΙΟ') {
-					    $schicon = 'icon-gym.png';
-					}
-					else if ($item->category === 'ΕΠΑΛ') {
-					    $schicon = 'icon-epal.png';
-					}
-					else if ($item->category === 'ΕΠΑΣ') {
-					    $schicon = 'icon-epas.png';
-					}
-					else if ($item->category === 'ΕΕΕΕΚ') {
-					    $schicon = 'icon-eeeek.png';
-					}
-					?>
+     $iconpath = Uri::base() . "components/com_schoolsj3/assets/icons/";
+     if ($item->category === "ΓΕΝΙΚΟ ΛΥΚΕΙΟ") {
+         $schicon = "icon-gel.png";
+     } elseif ($item->category === "ΓΥΜΝΑΣΙΟ") {
+         $schicon = "icon-gym.png";
+     } elseif ($item->category === "ΕΠΑΛ") {
+         $schicon = "icon-epal.png";
+     } elseif ($item->category === "ΕΠΑΣ") {
+         $schicon = "icon-epas.png";
+     } elseif ($item->category === "ΕΕΕΕΚ") {
+         $schicon = "icon-eeeek.png";
+     }
+     ?>
 
-					//var pin = new Microsoft.Maps.Pushpin(latLng, {'title': '<?php echo $item->schoolname ?>', 'icon': '<?php echo $iconpath.$schicon ?>'});
+					//var pin = new Microsoft.Maps.Pushpin(latLng, {'title': '<?php echo $item->schoolname; ?>', 'icon': '<?php echo $iconpath .
+    $schicon; ?>'});
 					var pin = new Microsoft.Maps.Pushpin(latLng, {
-					    icon: '<?php echo $iconpath.$schicon ?>'
+					    icon: '<?php echo $iconpath . $schicon; ?>'
 					});
 					pin.mid = i;
 					i++;
-					pin.title = '<?php echo $item->schoolname;?>';
+					pin.title = '<?php echo $item->schoolname; ?>';
 					pin.description = '<div class="infoWindow">' +
-							'<?php echo Text::_('COM_SCHOOLSJ3_ADDRESS'); ?>:<?php echo $item->address; ?>, <?php echo Text::_('COM_SCHOOLSJ3_POSTALCODE'); ?>: <?php echo $item->postcode; ?> <?php echo $item->area; ?><br/>' +
-							'<?php echo Text::_('COM_SCHOOLSJ3_EMAIL'); ?>: <a href=mailto:"<?php echo $item->email; ?>"><?php echo $item->email; ?></a><br/><br/>' +
-							'<?php echo Text::_('COM_SCHOOLSJ3_TELEPHONE'); ?>: <?php echo $item->phone; ?><br/>' +
-							'<?php echo Text::_('COM_SCHOOLSJ3_FAX'); ?>: <?php echo $item->fax; ?><br/>' +
-							'<?php echo Text::_('COM_SCHOOLSJ3_WEBSITE'); ?>: <?php echo HTMLHelper::link(substr($item->website,0,4)==='http'?$item->website:'http://'.$item->website, $item->website); ?> <!-- <a href="<?php echo $item->website; ?>"><?php echo $item->website; ?></a> --> <br/><br/>' +
-							//'<?php echo Text::_('COM_SCHOOLSJ3_OFFICE'); ?>: ' + '<?php echo $item->office; ?>' + '<br/>' +
-							'<?php echo Text::_('COM_SCHOOLSJ3_DISTRICT'); ?>: ' + '<?php echo $item->district; ?>' + '<br/>' +
-							'<?php echo Text::_('COM_SCHOOLSJ3_SHIFT'); ?>: ' + '<?php echo $item->shift; ?>' + '<br/>' +
-							'<?php echo Text::_('COM_SCHOOLSJ3_UNITS'); ?>: ' + '<?php echo $item->units; ?>' + '<br/>' +
-							'<?php echo Text::_('COM_SCHOOLSJ3_CATEGORY'); ?>: ' + '<?php echo $item->category; ?>' + '<br/>' +
-							'<?php echo Text::_('COM_SCHOOLSJ3_MINISTRY_CODE'); ?>: ' + '<?php echo $item->edu_id; ?>' + '<br/></div>';
+							'<?php echo Text::_(
+           "COM_SCHOOLSJ3_ADDRESS"
+       ); ?>:<?php echo $item->address; ?>, <?php echo Text::_(
+    "COM_SCHOOLSJ3_POSTALCODE"
+); ?>: <?php echo $item->postcode; ?> <?php echo $item->area; ?><br/>' +
+							'<?php echo Text::_(
+           "COM_SCHOOLSJ3_EMAIL"
+       ); ?>: <a href=mailto:"<?php echo $item->email; ?>"><?php echo $item->email; ?></a><br/><br/>' +
+							'<?php echo Text::_(
+           "COM_SCHOOLSJ3_TELEPHONE"
+       ); ?>: <?php echo $item->phone; ?><br/>' +
+							'<?php echo Text::_("COM_SCHOOLSJ3_FAX"); ?>: <?php echo $item->fax; ?><br/>' +
+							'<?php echo Text::_("COM_SCHOOLSJ3_WEBSITE"); ?>: <?php echo HTMLHelper::link(
+    substr($item->website, 0, 4) === "http"
+        ? $item->website
+        : "http://" . $item->website,
+    $item->website
+); ?> <!-- <a href="<?php echo $item->website; ?>"><?php echo $item->website; ?></a> --> <br/><br/>' +
+							//'<?php echo Text::_(
+           "COM_SCHOOLSJ3_OFFICE"
+       ); ?>: ' + '<?php echo $item->office; ?>' + '<br/>' +
+							'<?php echo Text::_(
+           "COM_SCHOOLSJ3_DISTRICT"
+       ); ?>: ' + '<?php echo $item->district; ?>' + '<br/>' +
+							'<?php echo Text::_(
+           "COM_SCHOOLSJ3_SHIFT"
+       ); ?>: ' + '<?php echo $item->shift; ?>' + '<br/>' +
+							'<?php echo Text::_(
+           "COM_SCHOOLSJ3_UNITS"
+       ); ?>: ' + '<?php echo $item->units; ?>' + '<br/>' +
+							'<?php echo Text::_(
+           "COM_SCHOOLSJ3_CATEGORY"
+       ); ?>: ' + '<?php echo $item->category; ?>' + '<br/>' +
+							'<?php echo Text::_(
+           "COM_SCHOOLSJ3_MINISTRY_CODE"
+       ); ?>: ' + '<?php echo $item->edu_id; ?>' + '<br/></div>';
 					//Microsoft.Maps.Events.addHandler(pin, 'click', pushpinClicked);
 					Microsoft.Maps.Events.addHandler(pin, 'mouseover', pushpinHovered);
 					Microsoft.Maps.Events.addHandler(pin, 'mouseout', closeTooltip);
@@ -343,7 +462,10 @@ defined('_JEXEC') or die;
 					    //Customize clustered pushpin.
 					    cluster.setOptions({
 						color: 'red',
-						    /*icon: <?php echo "'".Uri::base().'components/com_schoolsj3/assets/icons/icon-clustermarker.gif'."'" ?>*/
+						    /*icon: <?php echo "'" .
+              Uri::base() .
+              "components/com_schoolsj3/assets/icons/icon-clustermarker.gif" .
+              "'"; ?>*/
 					    });
 					    cluster.title = '' + cluster.containedPushpins.length + ' σχολεία';
 					},
@@ -463,6 +585,6 @@ defined('_JEXEC') or die;
 
 	<input type="hidden" name="task" value="" />
 	<input type="hidden" id="dirdir" value="1" />
-	<?php echo HTMLHelper::_('form.token'); ?>
+	<?php echo HTMLHelper::_("form.token"); ?>
     </div>
 </form>

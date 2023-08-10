@@ -1,25 +1,25 @@
 #controlUI {
-    padding: 11px;
+  padding: 11px;
 }
 
-#directionsmainform{
-    background-color:white;
-    box-shadow:0px 1px 4px rgba(0,0,0,0.3);
+#directionsmainform {
+  background-color: white;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 #autocomplete {
-    width: 98%;
+  width: 98%;
 }
 
 #directionsbutton {
-    font-size: 14px;
-    padding: 4px;
-    background-color: white;
-    border: 1px solid blue;
+  font-size: 14px;
+  padding: 4px;
+  background-color: white;
+  border: 1px solid blue;
 }
 
 #direrror {
-    font-size: 14px;
-    color: red;
-    font-weight: bold;
+  font-size: 14px;
+  color: red;
+  font-weight: bold;
 }

@@ -1,22 +1,22 @@
 {
-	"recommendations": [
-		"dotenv.dotenv-vscode",
-		"streetsidesoftware.code-spell-checker",
-		"ikappas.composer",
-		"pranaygp.vscode-css-peek",
-		"mhutchie.git-graph",
-		"github.vscode-pull-request-github",
-		"nhoizey.gremlins",
-		"ecmel.vscode-html-css",
-		"htmlhint.vscode-htmlhint",
-		"robertostermann.inline-parameters-extended",
-		"brunnerh.insert-unicode",
-		"zignd.html-css-class-completion",
-		"cardinal90.multi-cursor-case-preserve",
-		"davidanson.vscode-markdownlint",
-		"christian-kohler.path-intellisense",
-		"sanderronde.phpstan-vscode",
-		"mehedidracula.php-namespace-resolver",
-		"esbenp.prettier-vscode"
-	]
+  "recommendations": [
+    "dotenv.dotenv-vscode",
+    "streetsidesoftware.code-spell-checker",
+    "ikappas.composer",
+    "pranaygp.vscode-css-peek",
+    "mhutchie.git-graph",
+    "github.vscode-pull-request-github",
+    "nhoizey.gremlins",
+    "ecmel.vscode-html-css",
+    "htmlhint.vscode-htmlhint",
+    "robertostermann.inline-parameters-extended",
+    "brunnerh.insert-unicode",
+    "zignd.html-css-class-completion",
+    "cardinal90.multi-cursor-case-preserve",
+    "davidanson.vscode-markdownlint",
+    "christian-kohler.path-intellisense",
+    "sanderronde.phpstan-vscode",
+    "mehedidracula.php-namespace-resolver",
+    "esbenp.prettier-vscode"
+  ]
 }

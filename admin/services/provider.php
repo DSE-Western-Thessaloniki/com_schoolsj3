@@ -1,6 +1,6 @@
 <?php
 
-defined('_JEXEC') or die;
+defined("_JEXEC") or die();
 
 use Joomla\CMS\Dispatcher\ComponentDispatcherFactoryInterface;
 use Joomla\CMS\Extension\ComponentInterface;
@@ -12,18 +12,27 @@ use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
 
 return new class implements ServiceProviderInterface {
-    
-    public function register(Container $container): void {
-        $container->registerServiceProvider(new MVCFactory('\\DSEWestThessaloniki\\Component\\Schoolsj3'));
-        $container->registerServiceProvider(new ComponentDispatcherFactory('\\DSEWestThessaloniki\\Component\\Schoolsj3'));
-        $container->set(
-            ComponentInterface::class,
-            function (Container $container) {
-                $component = new MVCComponent($container->get(ComponentDispatcherFactoryInterface::class));
-                $component->setMVCFactory($container->get(MVCFactoryInterface::class));
-
-                return $component;
-            }
+    public function register(Container $container): void
+    {
+        $container->registerServiceProvider(
+            new MVCFactory("\\DSEWestThessaloniki\\Component\\Schoolsj3")
         );
+        $container->registerServiceProvider(
+            new ComponentDispatcherFactory(
+                "\\DSEWestThessaloniki\\Component\\Schoolsj3"
+            )
+        );
+        $container->set(ComponentInterface::class, function (
+            Container $container
+        ) {
+            $component = new MVCComponent(
+                $container->get(ComponentDispatcherFactoryInterface::class)
+            );
+            $component->setMVCFactory(
+                $container->get(MVCFactoryInterface::class)
+            );
+
+            return $component;
+        });
     }
 };

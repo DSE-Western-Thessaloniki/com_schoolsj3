@@ -5,32 +5,44 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 
-defined('_JEXEC') or die;
+defined("_JEXEC") or die();
 ?>
 
-<form action="<?php echo Route::_('index.php?option=com_schoolsj3&view=school&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
+<form action="<?php echo Route::_(
+    "index.php?option=com_schoolsj3&view=school&layout=edit&id=" .
+        (int) $this->item->id
+); ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
     <div class="row-fluid">
 	<div class="span10 form-horizontal">
 	    <fieldset>
-		<?php echo HTMLHelper::_('uitab.startTabSet', 'myTab',
-			array('active' => 'details')); ?>
-		    <?php echo HTMLHelper::_('uitab.addTab', 'myTab',
-			    'details', empty($this->item->id) ?
-			    Text::_('COM_SCHOOLSJ3_NEW_SCHOOL', true) :
-			    Text::sprintf('COM_SCHOOLSJ3_EDIT_SCHOOL',
-				$this->item->id, true)); ?>
-			<?php foreach ($this->form->getFieldset('schoolfields') as $field) : ?>
+		<?php echo HTMLHelper::_("uitab.startTabSet", "myTab", [
+      "active" => "details",
+  ]); ?>
+		    <?php echo HTMLHelper::_(
+          "uitab.addTab",
+          "myTab",
+          "details",
+          empty($this->item->id)
+              ? Text::_("COM_SCHOOLSJ3_NEW_SCHOOL", true)
+              : Text::sprintf(
+                  "COM_SCHOOLSJ3_EDIT_SCHOOL",
+                  $this->item->id,
+                  true
+              )
+      ); ?>
+			<?php foreach ($this->form->getFieldset("schoolfields") as $field): ?>
 			    <div class="control-group">
 				<div class="control-label"><?php echo $field->label; ?></div>
 				<div class="controls"><?php echo $field->input; ?></div>
 			    </div>
 			<?php endforeach; ?>
-			<?php $mapquery = "SELECT * FROM #__sch3_config WHERE id = 1";
-			    $db = Factory::getContainer()->get("DatabaseDriver");
-			    $db->setQuery($mapquery);
-			    $config_rows = $db->loadObjectList();
-			    $confData = $config_rows[0];
-			?>
+			<?php
+   $mapquery = "SELECT * FROM #__sch3_config WHERE id = 1";
+   $db = Factory::getContainer()->get("DatabaseDriver");
+   $db->setQuery($mapquery);
+   $config_rows = $db->loadObjectList();
+   $confData = $config_rows[0];
+   ?>
 			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<?php echo $confData->mapAPIKey; ?>">
 			</script>
 			<script type="text/javascript">
@@ -62,10 +74,10 @@ defined('_JEXEC') or die;
 		    </style>
 		    <div id="map-canvas"></div>
 
-		    <?php echo HTMLHelper::_('uitab.endTab'); ?>
+		    <?php echo HTMLHelper::_("uitab.endTab"); ?>
 		    <input type="hidden" name="task" value="" />
-		    <?php echo HTMLHelper::_('form.token'); ?>
-		<?php echo HTMLHelper::_('uitab.endTabSet'); ?>
+		    <?php echo HTMLHelper::_("form.token"); ?>
+		<?php echo HTMLHelper::_("uitab.endTabSet"); ?>
 	    </fieldset>
 	</div>
     </div>

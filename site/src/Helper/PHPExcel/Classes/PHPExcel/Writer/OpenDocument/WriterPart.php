@@ -25,7 +25,6 @@
  * @version    ##VERSION##, ##DATE##
  */
 
-
 /**
  * PHPExcel_Writer_OpenDocument_WriterPart
  *
@@ -33,6 +32,7 @@
  * @package    PHPExcel_Writer_OpenDocument
  * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
-abstract class PHPExcel_Writer_OpenDocument_WriterPart extends PHPExcel_Writer_Excel2007_WriterPart
+abstract class PHPExcel_Writer_OpenDocument_WriterPart extends
+    PHPExcel_Writer_Excel2007_WriterPart
 {
 }
