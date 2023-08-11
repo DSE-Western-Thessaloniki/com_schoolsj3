@@ -8,6 +8,8 @@
     <authorEmail>int.teo@gmail.com</authorEmail>
     <version>0.1.4</version>
 
+    <scriptfile>script.php</scriptfile>
+
     <install>
         <sql>
             <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
@@ -53,8 +55,6 @@
                 <menu view="shifts">COM_SCHOOLSJ3_SUBMENU_SHIFTS</menu>
                 <menu view="units">COM_SCHOOLSJ3_SUBMENU_UNITS</menu>
                 <menu view="districts">COM_SCHOOLSJ3_SUBMENU_DISTRICTS</menu>
-                <menu view="config">COM_SCHOOLSJ3_SUBMENU_CONFIGURATION</menu>
-                <menu view="info">COM_SCHOOLSJ3_SUBMENU_ABOUT</menu>
         </submenu>
         <files folder="admin">
             <filename>index.html</filename>

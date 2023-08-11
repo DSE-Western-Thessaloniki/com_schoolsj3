@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
-    <fields name="component" label="COM_SCHOOLSJ3_COMPONENT_LABEL" description="COM_SCHOOLSJ3_COMPONENT_DESC">
-    </fields>
+    <fieldset name="component" label="COM_SCHOOLSJ3" description="COM_SCHOOLSJ3_COMPONENT_CONFIG_DESC">
+        <field name="mapAPIKey" type="text" class="inputbox" size="40" label="COM_SCHOOLSJ3_CONFIG_FIELD_API_KEY" required="true" default="[Enter your API Key here]" />
+        <field name="mapWidth" type="text" class="inputbox" size="40" label="COM_SCHOOLSJ3_CONFIG_FIELD_MAP_WIDTH" required="true" default="99%" />
+        <field name="mapHeight" type="text" class="inputbox" size="40" label="COM_SCHOOLSJ3_CONFIG_FIELD_MAP_HEIGHT" required="true" default="350px" />
+        <field name="mapBorder" type="text" class="inputbox" size="40" label="COM_SCHOOLSJ3_CONFIG_FIELD_MAP_BORDER" required="true" default="1px solid lightblue" />
+        <field name="mapZoomLevel" type="text" class="inputbox" size="40" label="COM_SCHOOLSJ3_CONFIG_FIELD_MAP_ZOOM_LEVEL" required="true" default="4" />
+        <field name="mapCenterLat" type="text" class="inputbox" size="40" label="COM_SCHOOLSJ3_CONFIG_FIELD_MAP_CENTER_LAT" required="true" default="40.748442" />
+        <field name="mapCenterLng" type="text" class="inputbox" size="40" label="COM_SCHOOLSJ3_CONFIG_FIELD_MAP_CENTER_LNG" required="true" default="-73.984721" />
+    </fieldset>
 
-    <fields name="permissions" description="JCONFIG_PERMISSIONS_DESC" label="JCONFIG_PERMISSIONS_LABEL">
+    <fieldset name="permissions" description="JCONFIG_PERMISSIONS_DESC" label="JCONFIG_PERMISSIONS_LABEL">
 	    <field name="rules" type="rules" component="com_schoolsj3" filter="rules" validate="rules" label="JCONFIG_PERMISSIONS_LABEL" section="component" />
-    </fields>
+    </fieldset>
 </config>

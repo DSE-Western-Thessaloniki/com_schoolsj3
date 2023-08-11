@@ -1,5 +1,6 @@
 <?php
 
+use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
@@ -36,39 +37,29 @@ defined("_JEXEC") or die();
 				<div class="controls"><?php echo $field->input; ?></div>
 			    </div>
 			<?php endforeach; ?>
-			<?php
-   $mapquery = "SELECT * FROM #__sch3_config WHERE id = 1";
-   $db = Factory::getContainer()->get("DatabaseDriver");
-   $db->setQuery($mapquery);
-   $config_rows = $db->loadObjectList();
-   $confData = $config_rows[0];
-   ?>
-			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<?php echo $confData->mapAPIKey; ?>">
-			</script>
-			<script type="text/javascript">
-			    function initialize(){
-				var mapOptions = {
-				center: { lat: parseFloat(document.getElementsByName("jform[lat]")[0].value), lng: parseFloat(document.getElementsByName("jform[lng]")[0].value)},
-				zoom: <?php echo $confData->mapZoomLevelAdmin; ?>
-			    };
+			<?php $params = ComponentHelper::getParams("com_schoolsj3"); ?>
+	<script type='text/javascript'>
+    function GetMap() {
+        let map = new Microsoft.Maps.Map('#map-canvas', {
+            credentials: '<?php echo $params->get("mapAPIKey"); ?>',
+        });
 
-			    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-			    schoolpos = new google.maps.LatLng(parseFloat(document.getElementsByName("jform[lat]")[0].value), parseFloat(document.getElementsByName("jform[lng]")[0].value));
-			    var marker = new google.maps.Marker({
-					position: schoolpos,
-					map: map,
-					draggable: true
-			    });
+        //Request the user's location
+		let lat = document.getElementById('jform_lat');
+		let lng = document.getElementById('jform_lng');
+        let loc = new Microsoft.Maps.Location(
+                `${lat.value}`,
+                `${lng.value}`);
 
-			    google.maps.event.addListener(marker, 'drag', function() {
-				document.getElementsByName("jform[lat]")[0].value = marker.position.lat().toString();
-				document.getElementsByName("jform[lng]")[0].value = marker.position.lng().toString();
-			    });
+		//Add a pushpin at the user's location.
+		let pin = new Microsoft.Maps.Pushpin(loc);
+		map.entities.push(pin);
 
-			    }
-
-			    google.maps.event.addDomListener(window, 'load', initialize);
-			</script>
+		//Center the map on the user's location.
+		map.setView({ center: loc, zoom: 15 });
+    }
+    </script>
+    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
 		    <style type="text/css">
 			#map-canvas { height: 500px; width:500px; margin: 0; padding: 0; }
 		    </style>
