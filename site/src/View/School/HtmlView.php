@@ -1,6 +1,6 @@
 <?php
 
-namespace DSEWestThessaloniki\Component\Schoolsj3\Site\View;
+namespace DSEWestThessaloniki\Component\Schoolsj3\Site\View\School;
 
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 

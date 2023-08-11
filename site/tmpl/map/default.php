@@ -1,5 +1,6 @@
 <?php
 
+use DSEWestThessaloniki\Component\Schoolsj3\Site\Helper\MapHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
@@ -16,7 +17,7 @@ defined("_JEXEC") or die();
 	<!-- Filterbar -->
 	<div id="filter-bar" class="btn-toolbar">
 	    <div class="btn-group pull-left">
-		<button class="btn" type="button" onclick="window.location.href='index.php?option=com_schoolsj3&view=allsch&format=xls'"><?php echo Text::_(
+		<button class="btn" type="button" onclick="window.location.href='index.php?option=com_schoolsj3&view=allSch&format=xls'"><?php echo Text::_(
       "COM_SCHOOLSJ3_EXPORT_XLS"
   ); ?></button>
 		<button class="btn" type="button" onclick="window.location.href='index.php?option=com_schoolsj3&view=schools'"><?php echo Text::_(
@@ -346,7 +347,7 @@ defined("_JEXEC") or die();
 			</div>
 			<?php HTMLHelper::_("jquery.framework"); ?>
 
-			<?php require_once JPATH_SITE . "/components/com_schoolsj3/helpers/map.php"; ?>
+			<?php $mapcfg = (new MapHelper())->getMapConfig(); ?>
 
 			<div id="map-wrapper" style="width:<?php echo $mapcfg->mapWidth; ?>;height:<?php echo $mapcfg->mapHeight; ?>;">
 			    <div id="msmap-canvas"></div>

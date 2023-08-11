@@ -1,6 +1,6 @@
 <?php
 
-namespace DSEWestThessaloniki\Component\Schoolsj3\Site\View;
+namespace DSEWestThessaloniki\Component\Schoolsj3\Site\View\AllSch;
 
 use Joomla\CMS\MVC\View\HtmlView;
 use PHPExcel;
@@ -8,7 +8,7 @@ use PHPExcel_IOFactory;
 
 defined('_JEXEC') or die;
 
-class XLSView extends HtmlView
+class XlsView extends HtmlView
 {
     protected $items;
 

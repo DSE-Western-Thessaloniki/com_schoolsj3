@@ -6,7 +6,7 @@ use Joomla\CMS\MVC\Controller\BaseController;
 
 defined("_JEXEC") or die();
 
-class Schoolsj3Controller extends BaseController
+class DisplayController extends BaseController
 {
     protected $default_view = "schools";
 
