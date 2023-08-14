@@ -28,6 +28,7 @@
         <folder>assets</folder>
         <folder>src</folder>
         <folder>tmpl</folder>
+        <folder>vendor</folder>
 
         <filename>index.html</filename>
     </files>

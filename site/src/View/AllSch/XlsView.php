@@ -2,11 +2,11 @@
 
 namespace DSEWestThessaloniki\Component\Schoolsj3\Site\View\AllSch;
 
-use Joomla\CMS\MVC\View\HtmlView;
-use PHPExcel;
-use PHPExcel_IOFactory;
-
 defined('_JEXEC') or die;
+
+require_once JPATH_SITE.'/components/com_schoolsj3/vendor/autoload.php';
+
+use Joomla\CMS\MVC\View\HtmlView;
 
 class XlsView extends HtmlView
 {
@@ -22,39 +22,24 @@ class XlsView extends HtmlView
 			die;
 		}
 
-		require_once JPATH_SITE.'/components/com_schoolsj3/helpers/PHPExcel/Classes/PHPExcel.php';
-
 		// Create new PHPExcel object
-		$objPHPExcel = new PHPExcel();
-
-		// Set document properties
-		$objPHPExcel->getProperties()->setCreator("ΔΔΕ Δυτ. Θεσσαλονίκης")
-									->setLastModifiedBy("ΔΔΕ Δυτ. Θεσσαλονίκης")
-									->setTitle("Σχολεία ΔΔΕ Δυτ. Θεσσαλονίκης");
+		$writer = new \XLSXWriter();
 
 		// Convert array of objects to 2D array
 		$aa = 0;
-		$expdata = array();
+		$expdata = [["ΑΑ", "Σχολείο", "Τύπος", "Γραφείο", "Δήμος", "Διεύθυνση", "ΤΚ", "Βάρδια", "Μόρια", "Ομάδα", "Τηλ1", "Τηλ2", "Email"]];
 		foreach ($this->items as $i) {
 			$aa++;
 			$i->id = $aa;
 			$expdata[] = (array) $i;
 		}
+
 		// Add some data
-		$objPHPExcel->setActiveSheetIndex(0)
-				->fromArray($expdata);
+		$writer->writeSheet($expdata, 'Σχολεία');
 
-		// Rename worksheet
-		$objPHPExcel->getActiveSheet()->setTitle('Σχολεία');
-
-
-		// Set active sheet index to the first sheet, so Excel opens this as the first sheet
-		$objPHPExcel->setActiveSheetIndex(0);
-
-
-		// Redirect output to a client’s web browser (Excel5)
-		header('Content-Type: application/x-msexcel');
-		header('Content-Disposition: attachment;filename="SxoleiaDDE.xls"');
+		// Redirect output to a client's web browser
+		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		header('Content-Disposition: attachment;filename="SxoleiaDDE.xlsx"');
 		header('Cache-Control: max-age=0');
 		// If you're serving to IE 9, then the following may be needed
 		header('Cache-Control: max-age=1');
@@ -65,9 +50,7 @@ class XlsView extends HtmlView
 		header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
 		header ('Pragma: public'); // HTTP/1.0
 
-		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-		$objWriter->save('php://output');
-		exit;
+		$writer->writeToStdOut();
     }
 
 }
