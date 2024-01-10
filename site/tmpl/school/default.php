@@ -17,13 +17,13 @@ defined("_JEXEC") or die();
 		<td>
 		    <!-- School data -->
 		    <table>
-			<th colspan=2><?echo $this->item->description ?></th>
-			<tr><td><? echo Text::_('COM_SCHOOLSJ3_FIELD_ADDRESS_LABEL'); ?></td><td><?php echo $this
+			<th colspan=2><?php echo $this->item->description ?></th>
+			<tr><td><?php echo Text::_('COM_SCHOOLSJ3_FIELD_ADDRESS_LABEL'); ?></td><td><?php echo $this
        ->item->address .
        (!empty($this->item->postcode)
            ? "," . $this->item->postcode
            : ""); ?></td></tr>
-			<tr><td><? echo Text::_('COM_SCHOOLSJ3_FIELD_MUNICIPALITY_LABEL'); ?></td>
+			<tr><td><?php echo Text::_('COM_SCHOOLSJ3_FIELD_MUNICIPALITY_LABEL'); ?></td>
 			    <td><?php
        $query =
            "SELECT description FROM #__sch3_municipalities WHERE id=" .
@@ -36,23 +36,23 @@ defined("_JEXEC") or die();
 			    </td>
 			</tr>
 			<?php if (!empty($this->item->email)) { ?>
-			<tr><td><? echo Text::_('JGLOBAL_EMAIL'); ?></td><td><?php echo HTMLHelper::link(
+			<tr><td><?php echo Text::_('JGLOBAL_EMAIL'); ?></td><td><?php echo HTMLHelper::link(
        "mailto:" . $this->item->email,
        $this->item->email
    ); ?></td></tr>
 			<?php } ?>
 			<?php if (!empty($this->item->website)) { ?>
-			<tr><td><? echo Text::_('COM_SCHOOLSJ3_FIELD_WEBSITE_LABEL'); ?></td><td><?php echo HTMLHelper::link(
+			<tr><td><?php echo Text::_('COM_SCHOOLSJ3_FIELD_WEBSITE_LABEL'); ?></td><td><?php echo HTMLHelper::link(
        substr($this->item->website, 0, 4) === "http"
            ? $this->item->website
            : "http://" . $this->item->website,
        $this->item->website
    ); ?></td></tr>
 			<?php } ?>
-			<tr><td><? echo Text::_('COM_SCHOOLSJ3_FIELD_TELEPHONE_LABEL'); ?></td><td><?php echo $this
+			<tr><td><?php echo Text::_('COM_SCHOOLSJ3_FIELD_TELEPHONE_LABEL'); ?></td><td><?php echo $this
        ->item->phone; ?></td></tr>
 			<tr>
-			    <td><? echo Text::_('COM_SCHOOLSJ3_FIELD_CATEGORY_LABEL'); ?></td>
+			    <td><?php echo Text::_('COM_SCHOOLSJ3_FIELD_CATEGORY_LABEL'); ?></td>
 			    <td><?php
        $query =
            "SELECT description FROM #__sch3_categories WHERE id=" .
@@ -64,7 +64,7 @@ defined("_JEXEC") or die();
        ?>
 			    </td>
 			</tr>
-			<tr><td><? echo Text::_('COM_SCHOOLSJ3_FIELD_DISTRICT_LABEL'); ?></td>
+			<tr><td><?php echo Text::_('COM_SCHOOLSJ3_FIELD_DISTRICT_LABEL'); ?></td>
 			    <td><?php
        $query =
            "SELECT description FROM #__sch3_districts WHERE id=" .
@@ -76,7 +76,7 @@ defined("_JEXEC") or die();
        ?>
 			    </td>
 			</tr>
-			<tr><td><? echo Text::_('COM_SCHOOLSJ3_FIELD_OFFICE_LABEL'); ?></td>
+			<tr><td><?php echo Text::_('COM_SCHOOLSJ3_FIELD_OFFICE_LABEL'); ?></td>
 			    <td><?php
        $query =
            "SELECT description FROM #__sch3_offices WHERE id=" .
@@ -88,7 +88,7 @@ defined("_JEXEC") or die();
        ?>
 			    </td>
 			</tr>
-			<tr><td><? echo Text::_('COM_SCHOOLSJ3_FIELD_SHIFT_LABEL'); ?></td>
+			<tr><td><?php echo Text::_('COM_SCHOOLSJ3_FIELD_SHIFT_LABEL'); ?></td>
 			    <td><?php
        $query =
            "SELECT description FROM #__sch3_shifts WHERE id=" .
@@ -100,7 +100,7 @@ defined("_JEXEC") or die();
        ?>
 			    </td>
 			</tr>
-			<tr><td><? echo Text::_('COM_SCHOOLSJ3_FIELD_UNITS_LABEL'); ?></td>
+			<tr><td><?php echo Text::_('COM_SCHOOLSJ3_FIELD_UNITS_LABEL'); ?></td>
 			    <td><?php
        $query =
            "SELECT units FROM #__sch3_units WHERE id=" .
