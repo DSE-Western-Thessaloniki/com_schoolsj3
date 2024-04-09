@@ -10,17 +10,15 @@ use Joomla\CMS\Uri\Uri;
 defined("_JEXEC") or die();
 ?>
 
-<form action="<?php echo Route::_(
-    "index.php?option=com_schoolsj3&view=map"
-); ?>" method="post" name="adminForm" id="adminForm">
+<form action="" method="post" name="adminForm" id="adminForm">
 
 	<!-- Filterbar -->
 	<div id="filter-bar" class="btn-toolbar">
 	    <div class="btn-group pull-left">
-		<button class="btn" type="button" onclick="window.location.href='index.php?option=com_schoolsj3&view=allSch&format=xls'"><?php echo Text::_(
+		<button class="btn" type="button" onclick="window.location.href='<?php echo Route::_("index.php?view=allSch&format=xls"); ?>'"><?php echo Text::_(
       "COM_SCHOOLSJ3_EXPORT_XLS"
   ); ?></button>
-		<button class="btn" type="button" onclick="window.location.href='index.php?option=com_schoolsj3&view=schools'"><?php echo Text::_(
+		<button class="btn" type="button" onclick="window.location.href='<?php echo Route::_("index.php?view=schools"); ?>'"><?php echo Text::_(
       "COM_SCHOOLSJ3_SHOW_TABLE"
   ); ?></button>
 	    </div>

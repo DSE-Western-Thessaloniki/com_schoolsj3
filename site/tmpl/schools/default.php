@@ -11,17 +11,15 @@ $listOrder = $this->escape($this->state->get("list.ordering"));
 $listDirn = $this->escape($this->state->get("list.direction"));
 ?>
 
-<form action="<?php echo Route::_(
-    "index.php?option=com_schoolsj3&view=schools"
-); ?>" method="post" name="adminForm" id="adminForm">
+<form action="" method="post" name="adminForm" id="adminForm">
 
 	<!-- Filterbar -->
 	<div id="filter-bar" class="btn-toolbar">
 	    <div class="btn-group pull-left">
-		<button class="btn" type="button" onclick="window.location.href='index.php?option=com_schoolsj3&view=allSch&format=xls'"><?php echo Text::_(
+		<button class="btn" type="button" onclick="window.location.href='<?php echo Route::_("index.php?view=allSch&format=xls"); ?>'"><?php echo Text::_(
       "COM_SCHOOLSJ3_EXPORT_XLS"
   ); ?></button>
-		<button class="btn" type="button" onclick="window.location.href='index.php?option=com_schoolsj3&view=map'"><?php echo Text::_(
+		<button class="btn" type="button" onclick="window.location.href='<?php echo Route::_("index.php?view=map"); ?>'"><?php echo Text::_(
       "COM_SCHOOLSJ3_SHOW_MAP"
   ); ?></button>
 	    </div>
