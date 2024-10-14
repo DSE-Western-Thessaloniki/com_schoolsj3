@@ -59,7 +59,7 @@ defined("_JEXEC") or die();
 		map.setView({ center: loc, zoom: 15 });
     }
     </script>
-    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
 		    <style type="text/css">
 			#map-canvas { height: 500px; width:500px; margin: 0; padding: 0; }
 		    </style>
