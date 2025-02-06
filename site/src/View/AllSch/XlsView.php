@@ -1,6 +1,6 @@
 <?php
 
-namespace DSEWestThessaloniki\Component\Schoolsj3\Site\View\AllSch;
+namespace DSEWesternThessaloniki\Component\Schoolsj3\Site\View\AllSch;
 
 defined('_JEXEC') or die;
 

@@ -1,6 +1,6 @@
 <?php
 
-use DSEWestThessaloniki\Component\Schoolsj3\Site\Helper\MapHelper;
+use DSEWesternThessaloniki\Component\Schoolsj3\Site\Helper\MapHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;

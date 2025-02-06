@@ -1,6 +1,6 @@
 <?php
 
-namespace DSEWestThessaloniki\Component\Schoolsj3\Site\Controller;
+namespace DSEWesternThessaloniki\Component\Schoolsj3\Site\Controller;
 
 use Joomla\CMS\MVC\Controller\BaseController;
 

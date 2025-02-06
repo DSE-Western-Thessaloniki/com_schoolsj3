@@ -1,6 +1,6 @@
 <?php
 
-namespace DSEWestThessaloniki\Component\Schoolsj3\Administrator\Model;
+namespace DSEWesternThessaloniki\Component\Schoolsj3\Administrator\Model;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;

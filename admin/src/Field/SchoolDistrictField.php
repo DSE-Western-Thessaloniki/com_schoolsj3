@@ -1,6 +1,6 @@
 <?php
 
-namespace DSEWestThessaloniki\Component\Schoolsj3\Administrator\Field;
+namespace DSEWesternThessaloniki\Component\Schoolsj3\Administrator\Field;
 
 defined('JPATH_BASE') or die;
 

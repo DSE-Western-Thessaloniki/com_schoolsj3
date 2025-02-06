@@ -1,8 +1,8 @@
 <?php
 
-namespace DSEWestThessaloniki\Component\Schoolsj3\Administrator\View\Schools;
+namespace DSEWesternThessaloniki\Component\Schoolsj3\Administrator\View\Schools;
 
-use DSEWestThessaloniki\Component\Schoolsj3\Administrator\Helper\Schoolsj3Helper;
+use DSEWesternThessaloniki\Component\Schoolsj3\Administrator\Helper\Schoolsj3Helper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\Helpers\Sidebar;
 use Joomla\CMS\HTML\HTMLHelper;

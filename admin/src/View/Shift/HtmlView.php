@@ -1,6 +1,6 @@
 <?php
 
-namespace DSEWestThessaloniki\Component\Schoolsj3\Administrator\View\Shift;
+namespace DSEWesternThessaloniki\Component\Schoolsj3\Administrator\View\Shift;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;

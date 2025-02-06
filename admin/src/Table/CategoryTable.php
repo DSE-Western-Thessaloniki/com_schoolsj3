@@ -1,6 +1,6 @@
 <?php
 
-namespace DSEWestThessaloniki\Component\Schoolsj3\Administrator\Table;
+namespace DSEWesternThessaloniki\Component\Schoolsj3\Administrator\Table;
 
 use Joomla\CMS\Table\Table;
 use Joomla\Database\DatabaseDriver;

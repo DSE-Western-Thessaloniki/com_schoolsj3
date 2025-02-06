@@ -15,11 +15,11 @@ return new class implements ServiceProviderInterface {
     public function register(Container $container): void
     {
         $container->registerServiceProvider(
-            new MVCFactory("\\DSEWestThessaloniki\\Component\\Schoolsj3")
+            new MVCFactory("\\DSEWesternThessaloniki\\Component\\Schoolsj3")
         );
         $container->registerServiceProvider(
             new ComponentDispatcherFactory(
-                "\\DSEWestThessaloniki\\Component\\Schoolsj3"
+                "\\DSEWesternThessaloniki\\Component\\Schoolsj3"
             )
         );
         $container->set(ComponentInterface::class, function (

@@ -22,7 +22,7 @@
         </sql>
     </uninstall>
 
-    <namespace path="src/">DSEWestThessaloniki\Component\Schoolsj3</namespace>
+    <namespace path="src/">DSEWesternThessaloniki\Component\Schoolsj3</namespace>
 
     <files folder="site">
         <folder>assets</folder>

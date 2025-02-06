@@ -1,6 +1,6 @@
 <?php
 
-namespace DSEWestThessaloniki\Component\Schoolsj3\Site\Helper;
+namespace DSEWesternThessaloniki\Component\Schoolsj3\Site\Helper;
 
 use Joomla\CMS\Component\ComponentHelper;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace DSEWestThessaloniki\Component\Schoolsj3\Site\Table;
+namespace DSEWesternThessaloniki\Component\Schoolsj3\Site\Table;
 
 use Joomla\CMS\Table\Table;
 

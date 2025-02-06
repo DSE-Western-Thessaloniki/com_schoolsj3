@@ -1,6 +1,6 @@
 <?php
 
-namespace DSEWestThessaloniki\Component\Schoolsj3\Administrator\View\School;
+namespace DSEWesternThessaloniki\Component\Schoolsj3\Administrator\View\School;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;

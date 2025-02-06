@@ -1,6 +1,6 @@
 <?php
 
-namespace DSEWestThessaloniki\Component\Schoolsj3\Site\Model;
+namespace DSEWesternThessaloniki\Component\Schoolsj3\Site\Model;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\ItemModel;

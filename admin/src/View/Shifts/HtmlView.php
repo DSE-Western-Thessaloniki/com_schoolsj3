@@ -1,8 +1,8 @@
 <?php
 
-namespace DSEWestThessaloniki\Component\Schoolsj3\Administrator\View\Shifts;
+namespace DSEWesternThessaloniki\Component\Schoolsj3\Administrator\View\Shifts;
 
-use DSEWestThessaloniki\Component\Schoolsj3\Administrator\Helper\Schoolsj3Helper;
+use DSEWesternThessaloniki\Component\Schoolsj3\Administrator\Helper\Schoolsj3Helper;
 use Joomla\CMS\HTML\Helpers\Sidebar;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;

@@ -1,6 +1,6 @@
 <?php
 
-namespace DSEWestThessaloniki\Component\Schoolsj3\Administrator\Helper;
+namespace DSEWesternThessaloniki\Component\Schoolsj3\Administrator\Helper;
 
 use Joomla\CMS\Access\Access;
 use Joomla\CMS\Factory;
