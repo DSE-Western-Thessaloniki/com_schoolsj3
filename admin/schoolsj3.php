@@ -2,8 +2,6 @@
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
-use Joomla\CMS\MVC\Controller\BaseController;
-use Joomla\CMS\MVC\Factory\MVCFactory;
 
 defined("_JEXEC") or die();
 
