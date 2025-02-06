@@ -6,6 +6,7 @@ defined('_JEXEC') or die;
 
 require_once JPATH_SITE.'/components/com_schoolsj3/vendor/autoload.php';
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\View\HtmlView;
 
 class XlsView extends HtmlView
@@ -14,7 +15,11 @@ class XlsView extends HtmlView
 
     public function display($tpl = null)
     {
-		$this->items = $this->get('Items');
+		$this->model = Factory::getApplication()
+			->bootComponent('com_schoolsj3')
+			->getMVCFactory()
+			->createModel('AllSch', 'Site');
+        $this->items = $this->model->getItems();
 
 		if (count($errors = $this->get('Errors')))
 		{
