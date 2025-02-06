@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" method="upgrade">
     <name>COM_SCHOOLSJ3</name>
-    <creationDate>15/07/2023</creationDate>
+    <creationDate>06/02/2025</creationDate>
     <author>Theofilos Intzoglou</author>
-    <copyright>Copyright (C) 2015-2023 Theofilos Intzoglou, All rights reserved.</copyright>
+    <copyright>Copyright (C) 2015-2025 Theofilos Intzoglou, All rights reserved.</copyright>
     <license>GPL v2</license>
     <authorEmail>int.teo@gmail.com</authorEmail>
-    <version>0.1.4</version>
+    <version>0.1.7</version>
 
     <scriptfile>script.php</scriptfile>
 
@@ -61,6 +61,7 @@
             <filename>index.html</filename>
             <filename>access.xml</filename>
             <filename>config.xml</filename>
+            <filename>schoolsj3.php</filename>
             <folder>forms</folder>
             <folder>services</folder>
             <folder>sql</folder>
